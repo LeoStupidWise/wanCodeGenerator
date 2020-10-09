@@ -1,6 +1,5 @@
 <div>
-    1. Z
     <pre class="layui-code">
-Hello
+1. 弹出框想要滚动条的话，就对 layer.open 使用固定长度和宽度。
     </pre>
 </div>

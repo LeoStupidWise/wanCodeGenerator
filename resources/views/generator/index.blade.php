@@ -21,7 +21,7 @@
 
 <div class="layui-tab">
     <ul class="layui-tab-title">
-        <li class="layui-this">自定义选择</li>
+        <li class="layui-this">选择模板</li>
         <li>通用</li>
         <li>小贴士</li>
     </ul>
@@ -29,23 +29,30 @@
         <div class="layui-tab-item layui-show">
             <div id="vue-app">
                 <div>
-                    <form class="layui-form">
+                    <div class="layui-form" lay-filter="radio-type-select">
                         <div class="layui-form-item">
                             <div class="layui-input-block">
-                                <input type="radio" name="type" data-type="threeColumnInfo" title="三列基本信息">
-                                <input type="radio" name="type" data-type="twoSelect" title="二级联动">
-                                <input type="radio" name="type" data-type="singleTextarea" title="弹出框-仅仅textarea">
-                                <input type="radio" name="type" data-type="justRadio" title="弹出框-单选">
+                                <input type="radio" lay-filter="radio-type-select" name="type" data-type="threeColumnInfo" title="三列基本信息">
+                                <input type="radio" lay-filter="radio-type-select" name="type" data-type="twoSelect" title="二级联动">
+                                <input type="radio" lay-filter="radio-type-select" name="type" data-type="singleTextarea" title="弹出框-仅仅textarea">
+                                <input type="radio" lay-filter="radio-type-select" name="type" data-type="justRadio" title="弹出框-单选">
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
 
                 <div id="area-model">
                 </div>
 
                 <div>
-                    <pre class="layui-code" id="area-code">@{{ templateNow }}</pre>
+                    <pre class="layui-code" v-pre id="area-code-twoSelect" style="display: none"
+                    >{!! htmlspecialchars(file_get_contents(resource_path("/views/templates/twoSelect.blade.php"))) !!}</pre>
+                    <pre class="layui-code" v-pre id="area-code-threeColumnInfo" style="display: none"
+                    >{!! htmlspecialchars(file_get_contents(resource_path("/views/templates/threeColumnInfo.blade.php"))) !!}</pre>
+                    <pre class="layui-code" v-pre id="area-code-justRadio" style="display: none"
+                    >{!! htmlspecialchars(file_get_contents(resource_path("/views/templates/alert/justRadio.blade.php"))) !!}</pre>
+                    <pre class="layui-code" v-pre id="area-code-singleTextarea" style="display: none"
+                    >{!! htmlspecialchars(file_get_contents(resource_path("/views/templates/alert/singleTextarea.blade.php"))) !!}</pre>
                 </div>
             </div>
         </div>
@@ -59,6 +66,7 @@
 </div>
 </body>
 
+@include("generator.vueInit")
 @include("templates.threeColumnInfo")
 @include("templates.twoSelect")
 @include("templates.alert.singleTextarea")
@@ -67,86 +75,14 @@
 <script>
     const vueApp = new Vue({
         el: "#vue-app",
-        data: {
-            layForm: null,
-            layer: null,
-            layTpl: null,
-            layElement: null,
-            templates: {
-                threeColumnInfo: "",
-                twoSelect: "",
-                alerts: {
-                    singleTextarea: "",
-                    justRadio: "",
-                },
-            },
-            templateNow: "",
-        },
+        data: getVueData(),
         methods: {
             initLayUi: function () {
-                layui.use(['layer', 'form', 'laytpl', 'code', 'element'], function(){
-                    vueApp.layer = layui.layer;
-                    vueApp.layForm = layui.form;
-                    vueApp.layTpl = layui.laytpl;
-                    vueApp.layElement = layui.element;
-
-                    // layTpl 的开闭标签与 blade、Vue 均有冲突
-                    vueApp.layTpl.config({
-                        open: '{<',
-                        close: '+}'
-                    });
-
-                    // 代码初始化
-                    vueApp.layTpl($("#template-three-column-info").html()).render({}, function(html){
-                        vueApp.templates.threeColumnInfo = html;
-                    });
-                    vueApp.layTpl($("#template-two-select").html()).render({}, function(html){
-                        vueApp.templates.twoSelect = html;
-                    });
-                    vueApp.layTpl($("#template-alert-single-textarea").html()).render({}, function(html){
-                        vueApp.templates.alerts.singleTextarea = html;
-                    });
-                    vueApp.layTpl($("#template-alert-just-radio").html()).render({}, function(html){
-                        vueApp.templates.alerts.justRadio = html;
-                    });
-
-                    vueApp.layForm.on("radio", function (obj) {
-                        let type = $(obj.elem).data("type");
-                        let isAlert = 0;
-                        let layerOpenOption = {
-                            type: 1,
-                            title: '标题',
-                            content: "",
-                            btn: ['确定', '取消'],
-                        };
-                        switch (type) {
-                            case "threeColumnInfo":
-                                vueApp.templateNow = vueApp.templates.threeColumnInfo;
-                                isAlert = 0;
-                                break;
-                            case "singleTextarea":
-                                vueApp.templateNow = vueApp.templates.alerts.singleTextarea;
-                                isAlert = 1;
-                                layerOpenOption.content = vueApp.templateNow;
-                                layerOpenOption.area = ['500px', '280px'];
-                                break;
-                            case "justRadio":
-                                vueApp.templateNow = vueApp.templates.alerts.justRadio;
-                                isAlert = 1;
-                                layerOpenOption.content = vueApp.templateNow;
-                                layerOpenOption.area = ['500px', '230px'];
-                                break;
-                        }
-                        if (isAlert) {
-                            layer.open(layerOpenOption);
-                            $("#area-model").css("display", "none");
-                        }
-                        else {
-                            $("#area-model").html(vueApp.templateNow).css("display", "block");
-                        }
-                        vueApp.layForm.render();
-                    });
-                });
+                layInit();
+            },
+            initListener: function () {
+                twoSelectListener();
+                justRadioListener();
             },
         },
         mounted: function () {

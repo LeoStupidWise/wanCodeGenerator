@@ -19,3 +19,13 @@
         </div>
     </form>
 </script>
+
+<script>
+    function justRadioListener() {
+        // 单选的监听
+        vueApp.layForm.on("radio(user-tag)", function (data) {
+            console.log(data);
+            // layer.msg("")
+        });
+    }
+</script>
