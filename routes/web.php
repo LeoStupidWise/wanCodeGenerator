@@ -15,4 +15,4 @@ Route::get('/', function () {
     return view('generator/index');
 });
 
-Route::get("code", "CodeController@getCode");
+Route::get("table", "CodeController@table");

@@ -24,6 +24,7 @@
         <li class="layui-this">选择模板</li>
         <li>通用</li>
         <li>小贴士</li>
+        <li><a href="{{ url('table') }}">数据列表</a></li>
     </ul>
     <div class="layui-tab-content">
         <div class="layui-tab-item layui-show">

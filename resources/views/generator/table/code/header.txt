@@ -1,0 +1,4 @@
+<?php $this->widget("application.widgets.BreadCrumbsWidget", ["data"=>['占位','占位','占位']]);?>
+<style>
+    <?php include(VIEW_PATH.'/generator/list/detail.css') ?>
+</style>

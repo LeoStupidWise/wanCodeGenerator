@@ -28,3 +28,108 @@ body {
 .line-height-20 {
     line-height: 20px;
 }
+
+.float-right {
+    float: right;
+}
+
+h1 {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+/* [panel] */
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.panel-default {
+    border-color: #ddd;
+}
+.panel-default>.panel-heading {
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+}
+.panel-heading {
+    padding: 5px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.panel-body {
+    padding: 15px;
+}
+
+/* [edit layui] */
+.layui-breadcrumb span {
+    color: #000!important;
+    font-size: 14px;
+}
+.layui-breadcrumb a {
+    color: #000!important;
+}
+.layui-breadcrumb {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+}
+.layui-table tbody tr:last-child:hover{
+    background-color:#fff!important;
+}
+
+/* [other] */
+.fr {
+    float: right;
+    margin-top: -1px;
+}
+
+.panel-heading:after {
+    content:"";
+    display: block;
+    clear:both;
+}
+.span-title{
+    display: inline-block;
+    font-family: '微软雅黑,宋体';
+    color: #6B6B6B;
+    font-size:16px;
+    font-weight: 400;
+    padding: 10px 3px;
+}
+.nav-bar{
+    padding: 5px;
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+    margin-bottom: -10px;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.layui-table {
+    margin-top: 0;
+    width: 100% !important;
+}
+
+.layui-fluid {
+    padding: 0;
+}
+
+.layui-card-body{
+    padding: 0;
+}
+
+.layui-table-tool-temp{
+    padding-right: 0 !important;
+}
+
+.layui-laypage {
+    float: right;
+}
