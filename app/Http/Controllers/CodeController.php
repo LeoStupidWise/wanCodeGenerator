@@ -47,7 +47,7 @@ class CodeController extends Controller
             array_push($tableRenderData, $temp);
         }
         $view = view(
-            "generator/table/controller/search",
+            "generator/table/controller/view",
             compact("searchItems", "pageActions", "tableLists", "tableRenderData")
         );
         return html_entity_decode(response($view)->getContent());
