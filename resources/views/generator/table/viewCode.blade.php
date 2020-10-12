@@ -1,7 +1,7 @@
 <div class="layui-tab layui-tab-brief">
     <ul class="layui-tab-title">
         <li class="layui-this">CSS</li>
-        <li>View</li>
+        <li  v-on:click="getCodeOfView()">View</li>
         <li>Controller</li>
         <li>Service</li>
         <li>Model</li>

@@ -61,6 +61,9 @@
             pageActions: [],                            // 页面操作
             tableLists: [],                             // 表格展示列
             rowActions: [],                             // 行内操作
+            codes: {                                    // 代码预览
+                view: '',
+            },
             testFormData: {
                 indexMenu: '用户,黑名单,测试',
                 searchItems: [
@@ -123,6 +126,20 @@
                     this.tableLists.push(getNewTableList());
                     this.rowActions.push(getNewRowAction());
                 }
+            },
+            getCodeOfView: function () {
+                $.ajax({
+                    url: "/table/code",
+                    type: 'GET',
+                    data: {
+                        searchItems: vueApp.searchItems,
+                        pageActions: vueApp.pageActions,
+                        tableLists: vueApp.tableLists,
+                    },
+                    success: function(data) {
+                        vueApp.codes.view = data
+                    }
+                });
             },
             /**
              * 使用 layer 进行错误输出

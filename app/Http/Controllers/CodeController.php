@@ -30,4 +30,26 @@ class CodeController extends Controller
             return view('generator/table/index');
         }
     }
+
+    public function tableCode(Request $request)
+    {
+        $searchItems = $request["searchItems"];
+        $pageActions = $request["pageActions"];
+        $tableLists = $request["tableLists"];
+        $tableRenderData = [];
+        foreach ($tableLists as $tableList) {
+            $temp = [
+                "field" => $tableList["paramName"],
+                "align" => "center",
+                "title" => $tableList["columnName"],
+                "templet" => "#tpl-table-column-".$tableList["paramName"],
+            ];
+            array_push($tableRenderData, $temp);
+        }
+        $view = view(
+            "generator/table/controller/search",
+            compact("searchItems", "pageActions", "tableLists", "tableRenderData")
+        );
+        return html_entity_decode(response($view)->getContent());
+    }
 }

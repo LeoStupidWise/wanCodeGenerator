@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get("table", "CodeController@table");
+Route::get("table/code", "CodeController@tableCode");
