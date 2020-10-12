@@ -63,6 +63,7 @@
             rowActions: [],                             // 行内操作
             codes: {                                    // 代码预览
                 view: '',
+                model: '',
             },
             testFormData: {
                 indexMenu: '用户,黑名单,测试',
@@ -137,7 +138,8 @@
                         tableLists: vueApp.tableLists,
                     },
                     success: function(data) {
-                        vueApp.codes.view = data
+                        vueApp.codes.view = data.view;
+                        vueApp.codes.model = data.model;
                     }
                 });
             },

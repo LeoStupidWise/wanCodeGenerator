@@ -4,7 +4,7 @@
         <li  v-on:click="getCodeOfView()">View</li>
         <li>Controller</li>
         <li>Service</li>
-        <li>Model</li>
+        <li v-on:click="getCodeOfView()">Model</li>
     </ul>
     <div class="layui-tab-content">
         <div class="layui-tab-item layui-show">
@@ -14,13 +14,21 @@
             @include("generator.table.code.view")
         </div>
         <div class="layui-tab-item">
-            @include("generator.table.code.controller")
+            <textarea name=""
+                      disabled
+                      style="height: 700px"
+                      class="layui-textarea">@include("generator.table.code.controller")</textarea>
+
         </div>
         <div class="layui-tab-item">
             @include("generator.table.code.service")
         </div>
         <div class="layui-tab-item">
-            @include("generator.table.code.model")
+            <textarea name=""
+                      disabled
+                      v-html="codes.model"
+                      style="height: 700px"
+                      class="layui-textarea"></textarea>
         </div>
     </div>
 </div>

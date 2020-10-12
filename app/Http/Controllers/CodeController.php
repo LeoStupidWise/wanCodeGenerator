@@ -47,9 +47,18 @@ class CodeController extends Controller
             array_push($tableRenderData, $temp);
         }
         $view = view(
-            "generator/table/controller/view",
+            "generator/table/code/controllerView",
             compact("searchItems", "pageActions", "tableLists", "tableRenderData")
         );
-        return html_entity_decode(response($view)->getContent());
+
+        $viewModel = view(
+            "generator/table/code/model",
+            compact("searchItems")
+        );
+        $result = [
+            "view" => html_entity_decode(response($view)->getContent()),
+            "model" => html_entity_decode(response($viewModel)->getContent()),
+        ];
+        return response()->json($result);
     }
 }

@@ -111,7 +111,7 @@
                 defaultToolbar: [],
                 loading: true, //翻页加loading
                 totalRow: false, //开启合计行
-                limit:20,
+                limit: 15,
                 width: '',
                 cols: [ //表头
                     {{ json_encode($tableRenderData, JSON_UNESCAPED_UNICODE) }}
