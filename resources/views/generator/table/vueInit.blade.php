@@ -64,6 +64,7 @@
             codes: {                                    // 代码预览
                 view: '',
                 model: '',
+                service: '',
             },
             testFormData: {
                 indexMenu: '用户,黑名单,测试',
@@ -140,6 +141,7 @@
                     success: function(data) {
                         vueApp.codes.view = data.view;
                         vueApp.codes.model = data.model;
+                        vueApp.codes.service = data.service;
                     }
                 });
             },

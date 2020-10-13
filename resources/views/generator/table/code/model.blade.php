@@ -13,5 +13,5 @@ public function getSearch($requestParams)
     @foreach($searchItems as $searchItem)
     ${{ $searchItem["paramName"] }} = $requestParams["{{ $searchItem["paramName"] }}"] ?? "";   // {{ $searchItem["label"] }}
     @endforeach
-    return compact("page", "limit" @foreach($searchItems as $searchItem) ,"{{ $searchItem["paramName"] }}" @endforeach)
+    return compact("page", "limit" @foreach($searchItems as $searchItem) ,"{{ $searchItem["paramName"] }}" @endforeach);
 }

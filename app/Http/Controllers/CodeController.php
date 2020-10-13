@@ -55,9 +55,14 @@ class CodeController extends Controller
             "generator/table/code/model",
             compact("searchItems")
         );
+        $viewService = view(
+            "generator/table/code/service",
+            compact("tableLists", "searchItems")
+        );
         $result = [
             "view" => html_entity_decode(response($view)->getContent()),
             "model" => html_entity_decode(response($viewModel)->getContent()),
+            "service" => html_entity_decode(response($viewService)->getContent()),
         ];
         return response()->json($result);
     }

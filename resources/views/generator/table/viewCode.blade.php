@@ -3,7 +3,7 @@
         <li class="layui-this">CSS</li>
         <li  v-on:click="getCodeOfView()">View</li>
         <li>Controller</li>
-        <li>Service</li>
+        <li v-on:click="getCodeOfView()">Service</li>
         <li v-on:click="getCodeOfView()">Model</li>
     </ul>
     <div class="layui-tab-content">
@@ -21,7 +21,11 @@
 
         </div>
         <div class="layui-tab-item">
-            @include("generator.table.code.service")
+            <textarea name=""
+                      disabled
+                      v-html="codes.service"
+                      style="height: 700px"
+                      class="layui-textarea"></textarea>
         </div>
         <div class="layui-tab-item">
             <textarea name=""
