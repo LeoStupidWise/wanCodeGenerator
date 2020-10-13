@@ -24,7 +24,7 @@
         <ul class="layui-tab-title">
             <li class="layui-this">列表信息搜集</li>
             <li v-on:click="renderTableAll()">页面预览</li>
-            <li>查看代码</li>
+            <li v-on:click="getCodeOfView()">查看代码</li>
         </ul>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">

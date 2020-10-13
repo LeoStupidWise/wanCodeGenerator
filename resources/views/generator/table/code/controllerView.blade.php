@@ -13,9 +13,9 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    @for($index=0; $index<(floor(count($searchItems))/4); $index++)
+                    @for($index=0; $index<=(floor(count($searchItems)/4)); $index++)
                         <div class="layui-form-item">
-                            @for($i=$index*4; $i<$index+4; $i++)
+                            @for($i=$index*4; $i<$index*4+4; $i++)
                                 @if(isset($searchItems[$i]))
                                     <div class="layui-inline layui-col-md3 no-margin">
                                         <label class="layui-form-label">{{ $searchItems[$i]["label"] }}:</label>
