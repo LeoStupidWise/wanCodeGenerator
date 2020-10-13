@@ -27,13 +27,13 @@
             <li>查看代码</li>
         </ul>
         <div class="layui-tab-content">
-            <div class="layui-tab-item">
+            <div class="layui-tab-item layui-show">
                 @include("generator.table.viewForm")
             </div>
             <div class="layui-tab-item">
                 @include("generator.table.viewPage")
             </div>
-            <div class="layui-tab-item layui-show">
+            <div class="layui-tab-item">
                 @include("generator.table.viewCode")
             </div>
         </div>
