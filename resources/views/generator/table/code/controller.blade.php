@@ -16,7 +16,7 @@ public function actionIndex()
     // 这里实例化的 service 视情况而定
     $service = new Service();
     $records = $model->getRecordsOrCount($requestParams);
-    $count = $model->getRecordsOrCount($search, true);
+    $count = $model->getRecordsOrCount($requestParams, true);
     $records = $service->indexDecorator($records);
     $result = [
         'code' => 0,

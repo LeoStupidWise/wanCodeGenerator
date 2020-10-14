@@ -70,6 +70,16 @@
     </script>
     <!--{{ $tableList["columnName"] }}-->
 @endforeach
+@if(count($rowActions) > 0)
+    <!--操作列-->
+    <script type="text/html" id="tpl-table-action">
+    @foreach($rowActions as $rowAction)
+        <a class="a-color-blue" lay-event="{{ $rowAction["funcName"] }}">{{ $rowAction["name"] }}</a>
+    @endforeach
+    </script>
+    <!--操作列-->
+@endif
+
 
 <script src="/public/js/helper.js"></script>
 <script type="text/javascript">

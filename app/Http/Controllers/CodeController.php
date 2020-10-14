@@ -36,6 +36,7 @@ class CodeController extends Controller
         $searchItems = $request["searchItems"];
         $pageActions = $request["pageActions"];
         $tableLists = $request["tableLists"];
+        $rowActions = $request["rowActions"];
         $tableRenderData = [];
         foreach ($tableLists as $tableList) {
             $temp = [
@@ -46,9 +47,16 @@ class CodeController extends Controller
             ];
             array_push($tableRenderData, $temp);
         }
+        if (count($rowActions) > 0) {
+            array_push($tableRenderData, [
+                "title" => "操作",
+                "align" => "center",
+                "templet" => "#tpl-table-action"
+            ]);
+        }
         $view = view(
             "generator/table/code/controllerView",
-            compact("searchItems", "pageActions", "tableLists", "tableRenderData")
+            compact("searchItems", "pageActions", "tableLists", "tableRenderData", "rowActions")
         );
 
         $viewModel = view(

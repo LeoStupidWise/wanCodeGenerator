@@ -50,3 +50,5 @@
 ![代码结构时序图](https://qncdn.wanshifu.com/a3cc9a457f62ee9a76fba0e59e24c1cd)
 
 ### 开发计划
+
+1. 表格列加上是否是时间的判断，如果是时间则不能简单的输出 d.columnName。

@@ -54,7 +54,7 @@ public function getWhere($search)
     }
     echo "    \$$paramName = \$search['$paramName'] ?? '$itemDefault';    # $label".PHP_EOL;
 } ?>
-
+    $where = " WHERE 1=1";
 <?php foreach ($searchItems as $searchItem){
     $paramName = $searchItem['paramName'];
     $label = $searchItem['label'];
@@ -69,4 +69,5 @@ public function getWhere($search)
         echo "    }".PHP_EOL;
     }
 } ?>
+    return $where;
 }
