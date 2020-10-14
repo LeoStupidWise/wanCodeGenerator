@@ -90,6 +90,13 @@
             window.location.href = '?' + params;
         });
 
+        layTable.on('tool(table-list)', function (obj) {
+            let data = obj.data;
+            let layEvent = obj.event;
+            console.log(data);
+            layer.msg("触发了事件：" + layEvent);
+        });
+
         /**
          * 投诉列表 - 全部，的渲染
          */

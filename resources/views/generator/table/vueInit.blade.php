@@ -87,7 +87,8 @@
                     {id: 1, columnName: '最近更新时间', paramName: 'updateTime'},
                 ],
                 rowActions: [
-                    {id: 1, name: '解除限制', funcName: ''}
+                    {id: 1, name: '解除限制', funcName: 'showDetail'},
+                    {id: 1, name: '编辑', funcName: 'edit'},
                 ],
             }
         }
@@ -108,6 +109,13 @@
                     vueApp.layTable = layui.table;
 
                     vueApp.renderTableAll();
+
+                    vueApp.layTable.on('tool(table-list)', function (obj) {
+                        let data = obj.data;
+                        let layEvent = obj.event;
+                        console.log(data);
+                        layer.msg("触发了事件：" + layEvent);
+                    });
                 });
             },
             /**
@@ -137,6 +145,7 @@
                         searchItems: vueApp.searchItems,
                         pageActions: vueApp.pageActions,
                         tableLists: vueApp.tableLists,
+                        rowActions: vueApp.rowActions,
                     },
                     success: function(data) {
                         vueApp.codes.view = data.view;
@@ -280,7 +289,20 @@
                     })
                 }
                 if (vueApp.rowActions.length > 0) {
-                    // TODO 操作列需完善
+                    let temp = '';
+                    for(let rowAction of vueApp.rowActions) {
+                        temp += (
+                            '<a class="a-color-blue" lay-event="' + rowAction.funcName
+                            + '">' + rowAction.name + '</a>        '
+                        );
+                    }
+                    tableColumns[0].push({
+                        align: "center",
+                        title: "操作",
+                        templet:  function(data){
+                            return temp.trim();
+                        }
+                    });
                 }
                 vueApp.layTable.render({
                     elem: '#table-list',

@@ -165,7 +165,7 @@
                                        v-model="rowAction.funcName"
                                        lay-filyer="required"
                                        class="layui-input"
-                                       placeholder="触发的函数名"/>
+                                       placeholder="触发的 lay-event 名"/>
                             </div>
                             <button type="button"
                                     v-on:click="addNewRowAction"

@@ -41,6 +41,50 @@
     </div>
 </script>
 <script>
+
+    /**
+    下面的数据给出为二级联动赋初始值
+    selections: [
+        {
+            value: "1",
+            text: "1",
+            selected: 0,
+            children: [
+                {value: "1-1", text: "1-1", selected: 0},
+                {value: "1-2", text: "1-2", selected: 0},
+                {value: "1-3", text: "1-3", selected: 0},
+                {value: "1-4", text: "1-4", selected: 0},
+            ]
+        },
+        {
+            value: "2",
+            text: "2",
+            selected: 0,
+            children: [
+                {value: "2-1", text: "2-1", selected: 0},
+                {value: "2-2", text: "2-2", selected: 0},
+            ]
+        },
+        {
+            value: "3",
+            text: "3",
+            selected: 0,
+            children: [
+                {value: "3-1", text: "3-1", selected: 0},
+                {value: "3-2", text: "3-2", selected: 0},
+                {value: "3-3", text: "3-3", selected: 0},
+            ]
+        }
+    ]
+    let selectionRender = {
+        selections: vueApp.selections,
+        selectionSecond: vueApp.selections[0].children
+    };
+    vueApp.layTpl($("#template-two-select").html()).render(selectionRender, function(html){
+        vueApp.templates.twoSelect = html;
+    });
+    */
+
     function twoSelectListener() {
         /**
          * 二级联动中一级下拉选的监听

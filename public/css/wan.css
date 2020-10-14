@@ -133,3 +133,8 @@ h1 {
 .layui-laypage {
     float: right;
 }
+
+.a-color-blue {
+    color: #1E9FFF;
+    cursor: pointer;
+}
