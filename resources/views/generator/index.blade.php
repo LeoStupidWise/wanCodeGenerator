@@ -33,10 +33,18 @@
                     <div class="layui-form" lay-filter="radio-type-select">
                         <div class="layui-form-item">
                             <div class="layui-input-block">
-                                <input type="radio" lay-filter="radio-type-select" name="type" data-type="threeColumnInfo" title="三列基本信息">
-                                <input type="radio" lay-filter="radio-type-select" name="type" data-type="twoSelect" title="二级联动">
-                                <input type="radio" lay-filter="radio-type-select" name="type" data-type="singleTextarea" title="弹出框-仅仅textarea">
-                                <input type="radio" lay-filter="radio-type-select" name="type" data-type="justRadio" title="弹出框-单选">
+                                <input type="radio" lay-filter="radio-type-select" name="type"
+                                       data-type="threeColumnInfo" title="三列基本信息">
+                                <input type="radio" lay-filter="radio-type-select" name="type"
+                                       data-type="twoSelect" title="二级联动">
+                                <input type="radio" lay-filter="radio-type-select" name="type"
+                                       data-type="singleTextarea" title="弹出框-仅仅textarea">
+                                <input type="radio" lay-filter="radio-type-select" name="type"
+                                       data-type="justRadio" title="弹出框-单选">
+                                <input type="radio" lay-filter="radio-type-select" name="type"
+                                       data-type="singleFileUpload" title="单个文件上传">
+                                <input type="radio" lay-filter="radio-type-select" name="type"
+                                       data-type="simpleForm" title="表单">
                             </div>
                         </div>
                     </div>
@@ -47,13 +55,58 @@
 
                 <div>
                     <pre class="layui-code" v-pre id="area-code-twoSelect" style="display: none"
-                    >{!! htmlspecialchars(file_get_contents(resource_path("/views/templates/twoSelect.blade.php"))) !!}</pre>
+                    >{!!
+                        htmlspecialchars(
+                            file_get_contents(
+                                resource_path("/views/templates/twoSelect.blade.php")
+                            )
+                        )
+                    !!}</pre>
+
                     <pre class="layui-code" v-pre id="area-code-threeColumnInfo" style="display: none"
-                    >{!! htmlspecialchars(file_get_contents(resource_path("/views/templates/threeColumnInfo.blade.php"))) !!}</pre>
+                    >{!!
+                        htmlspecialchars(
+                            file_get_contents(
+                                resource_path("/views/templates/threeColumnInfo.blade.php")
+                            )
+                        )
+                    !!}</pre>
+
                     <pre class="layui-code" v-pre id="area-code-justRadio" style="display: none"
-                    >{!! htmlspecialchars(file_get_contents(resource_path("/views/templates/alert/justRadio.blade.php"))) !!}</pre>
+                    >{!!
+                        htmlspecialchars(
+                            file_get_contents(
+                                resource_path("/views/templates/alert/justRadio.blade.php")
+                            )
+                        )
+                    !!}</pre>
+
                     <pre class="layui-code" v-pre id="area-code-singleTextarea" style="display: none"
-                    >{!! htmlspecialchars(file_get_contents(resource_path("/views/templates/alert/singleTextarea.blade.php"))) !!}</pre>
+                    >{!!
+                        htmlspecialchars(
+                            file_get_contents(
+                                resource_path("/views/templates/alert/singleTextarea.blade.php")
+                            )
+                        )
+                    !!}</pre>
+
+                    <pre class="layui-code" v-pre id="area-code-singleFileUpload" style="display: none"
+                    >{!!
+                        htmlspecialchars(
+                            file_get_contents(
+                                resource_path("/views/templates/alert/singleFileUpload.blade.php")
+                            )
+                        )
+                    !!}</pre>
+
+                    <pre class="layui-code" v-pre id="area-code-simpleForm" style="display: none"
+                    >{!!
+                        htmlspecialchars(
+                            file_get_contents(
+                                resource_path("/views/templates/simpleForm.blade.php")
+                            )
+                        )
+                    !!}</pre>
                 </div>
             </div>
         </div>
@@ -72,6 +125,8 @@
 @include("templates.twoSelect")
 @include("templates.alert.singleTextarea")
 @include("templates.alert.justRadio")
+@include("templates.alert.singleFileUpload")
+@include("templates.simpleForm")
 
 <script>
     const vueApp = new Vue({

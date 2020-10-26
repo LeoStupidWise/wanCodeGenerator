@@ -23,6 +23,12 @@
             vueApp.layTpl($("#template-alert-just-radio").html()).render({}, function(html){
                 vueApp.templates.alerts.justRadio = html;
             });
+            vueApp.layTpl($("#template-single-file-upload").html()).render({}, function(html){
+                vueApp.templates.alerts.singleFileUpload = html;
+            });
+            vueApp.layTpl($("#template-simple-form").html()).render(selectionRender, function(html){
+                vueApp.templates.simpleForm = html;
+            });
 
             vueApp.layForm.on("radio(radio-type-select)", function (obj) {
                 let type = $(obj.elem).data("type");
@@ -59,6 +65,19 @@
                         isAlert = 0;
                         $("#area-code-twoSelect").show();
                         break;
+                    case "singleFileUpload":
+                        vueApp.templateNow = vueApp.templates.alerts.singleFileUpload;
+                        $("#area-code-singleFileUpload").show();
+                        isAlert = 1;
+                        layerOpenOption.content = vueApp.templateNow;
+                        layerOpenOption.area = ['500px', '260px'];
+                        layerOpenOption.btn = null;
+                        break;
+                    case "simpleForm":
+                        vueApp.templateNow = vueApp.templates.simpleForm;
+                        isAlert = 0;
+                        $("#area-code-simpleForm").show();
+                        break;
                 }
                 if (isAlert) {
                     layer.open(layerOpenOption);
@@ -81,6 +100,8 @@
         $("#area-code-justRadio").hide();
         $("#area-code-singleTextarea").hide();
         $("#area-code-threeColumnInfo").hide();
+        $("#area-code-singleFileUpload").hide();
+        $("#area-code-simpleForm").hide();
     }
 
     /**
@@ -95,9 +116,11 @@
             templates: {
                 threeColumnInfo: "",
                 twoSelect: "",
+                simpleForm: "",
                 alerts: {
                     singleTextarea: "",
                     justRadio: "",
+                    singleFileUpload: "",
                 },
             },
             templateNow: "",
