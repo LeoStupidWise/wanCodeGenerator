@@ -66,29 +66,46 @@
                 model: '',
                 service: '',
             },
+            selections: [
+                {
+                    value: "1",
+                    text: "1",
+                    selected: 0,
+                },
+                {
+                    value: "2",
+                    text: "2",
+                    selected: 0,
+                },
+                {
+                    value: "3",
+                    text: "3",
+                    selected: 0,
+                }
+            ],
             testFormData: {
                 indexMenu: '用户,黑名单,测试',
                 searchItems: [
                     {id: 1, label: '总包信息', placeholder: '请输入总包信息', paramName: 'userInfo', isSelect: 0},
-                    {id: 1, label: '限制功能', placeholder: '请输入限制功能', paramName: 'phone', isSelect: 0},
-                    {id: 1, label: '状态', placeholder: '请选择状态', paramName: 'status', isSelect: 1},
-                    {id: 1, label: '备注', placeholder: '选择备注', paramName: 'remark', isSelect: 0},
-                    {id: 1, label: '类型', placeholder: '选择类型', paramName: 'type', isSelect: 1},
+                    {id: 2, label: '限制功能', placeholder: '请输入限制功能', paramName: 'phone', isSelect: 0},
+                    {id: 3, label: '状态', placeholder: '请选择状态', paramName: 'status', isSelect: 0},
+                    {id: 4, label: '备注', placeholder: '选择备注', paramName: 'remark', isSelect: 0},
+                    {id: 5, label: '类型', placeholder: '选择类型', paramName: 'type', isSelect: 0},
                 ],
                 pageActions: [
-                    {id: 1, name: '添加黑名单',funcName: 'addNewBlack()',}
+                    {id: 6, name: '添加黑名单',funcName: 'addNewBlack()',}
                 ],
                 tableLists: [
-                    {id: 1, columnName: '服务商名称', paramName: 'enterpriseName'},
-                    {id: 1, columnName: '限制功能', paramName: 'limitedFuncName'},
-                    {id: 1, columnName: '当前状态', paramName: 'statusText'},
-                    {id: 1, columnName: '操作人', paramName: 'actor'},
-                    {id: 1, columnName: '备注', paramName: 'remark'},
-                    {id: 1, columnName: '最近更新时间', paramName: 'updateTime'},
+                    {id: 7, columnName: '服务商名称', paramName: 'enterpriseName'},
+                    {id: 8, columnName: '限制功能', paramName: 'limitedFuncName'},
+                    {id: 9, columnName: '当前状态', paramName: 'statusText'},
+                    {id: 10, columnName: '操作人', paramName: 'actor'},
+                    {id: 11, columnName: '备注', paramName: 'remark'},
+                    {id: 12, columnName: '最近更新时间', paramName: 'updateTime'},
                 ],
                 rowActions: [
-                    {id: 1, name: '解除限制', funcName: 'showDetail'},
-                    {id: 1, name: '编辑', funcName: 'edit'},
+                    {id: 13, name: '解除限制', funcName: 'showDetail'},
+                    {id: 14, name: '编辑', funcName: 'edit'},
                 ],
             }
         }
@@ -115,6 +132,24 @@
                         let layEvent = obj.event;
                         console.log(data);
                         layer.msg("触发了事件：" + layEvent);
+                    });
+
+                    /**
+                     * 下拉选的 checkbox 发生了变化
+                     */
+                    vueApp.layForm.on('checkbox(filter-is-select)', function (obj) {
+                        let originalDom = obj.elem;
+                        let searchItemId = $(originalDom).data('id');
+                        let checked = originalDom.checked;
+                        vueApp.searchItems.forEach(function (searchItem) {
+                            if (searchItem.id === searchItemId) {
+                                if (checked) {
+                                    searchItem.isSelect = 1;
+                                } else {
+                                    searchItem.isSelect = 0;
+                                }
+                            }
+                        });
                     });
                 });
             },
@@ -324,6 +359,8 @@
                     width: '',
                     cols: tableColumns
                 });
+
+                vueApp.layForm.render();
             }
         };
     }

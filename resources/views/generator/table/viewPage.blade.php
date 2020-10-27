@@ -18,7 +18,14 @@
                             <div v-for="newIndex in [index, index+1, index+2, index+3]">
                                 <div class="layui-inline layui-col-md3 no-margin" v-if="searchItems[newIndex] != undefined">
                                     <label class="layui-form-label">@{{ searchItems[newIndex].label }}:</label>
-                                    <div class="layui-input-inline">
+                                    <div class="layui-input-inline" v-show="searchItems[newIndex].isSelect===1">
+                                        <select v-bind:name="searchItems[newIndex].paramName">
+                                            <option value="">全部</option>
+                                            <option v-for="(selection, index) in selections"
+                                                    :value="selection.value">@{{ selection.text }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="layui-input-inline" v-show="searchItems[newIndex].isSelect===0">
                                         <input type="text"
                                                v-bind:name="searchItems[newIndex].paramName"
                                                autocomplete="off"

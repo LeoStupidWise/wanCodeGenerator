@@ -2,25 +2,6 @@
     <form class="layui-form" id="serachForm">
         <div class="layui-card">
             <div class="layui-card-body layui-col-md-offset3">
-                <!-- 面包屑 -->
-{{--                <h1>--}}
-{{--                    面包屑--}}
-{{--                </h1>--}}
-{{--                <div class="layui-form-item">--}}
-{{--                    <label class="layui-form-label">导航</label>--}}
-{{--                    <div class="layui-inline">--}}
-{{--                        <div class="layui-input-inline">--}}
-{{--                            <input type="text"--}}
-{{--                                   style="width: 270px"--}}
-{{--                                   lay-filyer="required"--}}
-{{--                                   v-model="indexMenu"--}}
-{{--                                   class="layui-input"--}}
-{{--                                   placeholder="如：客服,投诉管理,添加投诉"/>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-                <!-- 面包屑 -->
-
                 <!-- 搜索项 -->
                 <h1>
                     搜索项

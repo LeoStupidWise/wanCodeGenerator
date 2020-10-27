@@ -19,16 +19,26 @@
                                 @if(isset($searchItems[$i]))
                                     <div class="layui-inline layui-col-md3 no-margin">
                                         <label class="layui-form-label">{{ $searchItems[$i]["label"] }}:</label>
-                                        <div class="layui-input-inline">
-                                            <input type="text"
-                                                   name="{{ $searchItems[$i]["paramName"] }}"
-                                                   autocomplete="off"
-                                                   class="layui-input"
-                                                   placeholder="{{ $searchItems[$i]["placeholder"] }} "
-                                                   {{-- 搜索后的填充值，这里先不管，在展示代码的时候再拼接 --}}
-                                                   value=""
-                                            >
-                                        </div>
+                                        @if(!$searchItems[$i]["isSelect"])
+                                            <div class="layui-input-inline">
+                                                <input type="text"
+                                                       name="{{ $searchItems[$i]["paramName"] }}"
+                                                       autocomplete="off"
+                                                       class="layui-input"
+                                                       placeholder="{{ $searchItems[$i]["placeholder"] }} "
+                                                       {{-- 搜索后的填充值，这里先不管，在展示代码的时候再拼接 --}}
+                                                       value=""
+                                                >
+                                            </div>
+                                        @else
+                                            <select name="{{ $searchItems[$i]["paramName"] }}">
+                                                <option value="">全部</option>
+                                                @foreach($selections as $selection)
+                                                    <option value="{{ $selection["value"] }}"
+                                                    >{{ $selection["text"] }}</option>
+                                                @endforeach
+                                            </select>
+                                        @endif
                                     </div>
                                 @endif
                             @endfor

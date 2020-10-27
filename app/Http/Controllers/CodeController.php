@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 
 class CodeController extends Controller
 {
+    const SELECTIONS = [
+        ["value" => 1, "text" => 1],
+        ["value" => 2, "text" => 2],
+        ["value" => 3, "text" => 3],
+        ["value" => 4, "text" => 4],
+    ];
+
     public function table(Request $request)
     {
         if ($request->ajax()) {
@@ -38,6 +45,7 @@ class CodeController extends Controller
         $tableLists = $request["tableLists"];
         $rowActions = $request["rowActions"];
         $tableRenderData = [];
+        $selections = self::SELECTIONS;
         foreach ($tableLists as $tableList) {
             $temp = [
                 "field" => $tableList["paramName"],
@@ -56,7 +64,9 @@ class CodeController extends Controller
         }
         $view = view(
             "generator/table/code/controllerView",
-            compact("searchItems", "pageActions", "tableLists", "tableRenderData", "rowActions")
+            compact(
+                "searchItems", "pageActions", "tableLists", "tableRenderData", "rowActions", "selections"
+            )
         );
 
         $viewModel = view(
