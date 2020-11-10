@@ -48,7 +48,7 @@ layDate.render({
 });
 </pre>
 
-<pre class="laui-code">
+<pre class="layui-code">
 // JQ 选择器获取复选框的值
 let serveCatIds = [];
 $('input[type=checkbox][name="category"]:checked').each(function() {
