@@ -55,3 +55,28 @@ $('input[type=checkbox][name="category"]:checked').each(function() {
     serveCatIds.push($(this).val());
 });
 </pre>
+
+<pre class="layui-code">
+// 下面这种方式能够以对象的形式获取到表单中的数据
+// proofFrom 就是表单的 ID
+$("#proofForm").serializeArray().map(function(x){
+    let pushValue = x.value.trim() || '';
+    // if (x.name !== "pictureAids" && x.name !== "nextFollowTime") {
+    // 这里是特殊处理的一个值
+    if (x.name === "documentAddress") {
+        let tempValue = (x.value || '').split("-=Zoe=-");
+        pushValue = {
+            value: tempValue[0],
+            name: tempValue[1]
+        }
+    }
+    if (data[x.name] !== undefined) {
+        if (!data[x.name].push) {
+            data[x.name] = [data[x.name]];
+        }
+        data[x.name].push(pushValue);
+    } else {
+        data[x.name] = pushValue;
+    }
+});
+</pre>
