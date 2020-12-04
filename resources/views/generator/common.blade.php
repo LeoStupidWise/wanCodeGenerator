@@ -40,6 +40,7 @@ layDate.render({
     elem: '#search-register-time',
     range: true,
     value: "2020-01-10",    // 默认值
+    type: 'date',   // 选择的格式，date 对应可选择 年月日，datetime 对应可选择 年月日-时分秒
     format: 'yyyy年MM月dd日 HH:mm:ss', //可任意组合
     change: function(value, date, endDate){
         $("#search-register-time").val(value);
