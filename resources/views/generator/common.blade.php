@@ -55,6 +55,9 @@ let serveCatIds = [];
 $('input[type=checkbox][name="category"]:checked').each(function() {
     serveCatIds.push($(this).val());
 });
+
+// JQ 设置 checkbox 不选中
+$(this).prop("checked", false);
 </pre>
 
 <pre class="layui-code">
