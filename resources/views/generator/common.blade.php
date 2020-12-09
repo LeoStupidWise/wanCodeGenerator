@@ -58,6 +58,11 @@ $('input[type=checkbox][name="category"]:checked').each(function() {
 
 // JQ 设置 checkbox 不选中
 $(this).prop("checked", false);
+
+// 弹出框中，如果下拉选的选项过多，导致出现纵向滚动条，可以加上下面这个
+.layui-layer-content {
+    overflow: visible !important;
+}
 </pre>
 
 <pre class="layui-code">
