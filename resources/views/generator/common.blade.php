@@ -1,14 +1,20 @@
+<div class="layui-collapse" lay-accordion="">
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">通过 layTPL 获取渲染用的 html</h2>
+        <div class="layui-colla-content">
 <pre class="layui-code">
-// 通过 layTPL 获取渲染用的 html
 let renderHtml = "";
 layTpl($('#tpl-add-plan').html()).render(data, function (html) {
     renderHtml = html;
 });
 return renderHtml;
 </pre>
-
+        </div>
+    </div>
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">layer.open 参数大全</h2>
+        <div class="layui-colla-content">
 <pre class="layui-code">
-// layer.open 参数大全
 layer.open({
     // type 会影响在 layer.open 中再使用 layer.msg()
     type: 1,
@@ -33,9 +39,12 @@ layer.open({
     },
 })
 </pre>
-
+        </div>
+    </div>
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">日期插件的渲染</h2>
+        <div class="layui-colla-content">
 <pre class="layui-code">
-// 日期插件的渲染
 layDate.render({
     elem: '#search-register-time',
     range: true,
@@ -48,9 +57,12 @@ layDate.render({
     }
 });
 </pre>
-
+        </div>
+    </div>
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">JQ 选择器获取复选框的值？</h2>
+        <div class="layui-colla-content">
 <pre class="layui-code">
-// JQ 选择器获取复选框的值
 let serveCatIds = [];
 $('input[type=checkbox][name="category"]:checked').each(function() {
     serveCatIds.push($(this).val());
@@ -64,9 +76,12 @@ $(this).prop("checked", false);
     overflow: visible !important;
 }
 </pre>
-
+        </div>
+    </div>
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">以对象的形式获取到表单中的数据</h2>
+        <div class="layui-colla-content">
 <pre class="layui-code">
-// 下面这种方式能够以对象的形式获取到表单中的数据
 // proofFrom 就是表单的 ID
 $("#proofForm").serializeArray().map(function(x){
     let pushValue = x.value.trim() || '';
@@ -89,3 +104,12 @@ $("#proofForm").serializeArray().map(function(x){
     }
 });
 </pre>
+        </div>
+    </div>
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">占位-TEST</h2>
+        <div class="layui-colla-content">
+            内容
+        </div>
+    </div>
+</div>
