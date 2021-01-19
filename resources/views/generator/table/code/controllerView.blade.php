@@ -31,13 +31,15 @@
                                                 >
                                             </div>
                                         @else
-                                            <select name="{{ $searchItems[$i]["paramName"] }}">
-                                                <option value="">全部</option>
-                                                @foreach($selections as $selection)
-                                                    <option value="{{ $selection["value"] }}"
-                                                    >{{ $selection["text"] }}</option>
-                                                @endforeach
-                                            </select>
+                                            <div class="layui-input-inline">
+                                                <select name="{{ $searchItems[$i]["paramName"] }}">
+                                                    <option value="">全部</option>
+                                                    @foreach($selections as $selection)
+                                                        <option value="{{ $selection["value"] }}"
+                                                        >{{ $selection["text"] }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         @endif
                                     </div>
                                 @endif
