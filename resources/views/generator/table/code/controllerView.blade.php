@@ -64,13 +64,15 @@
     <div id="toolbar" class="nav-bar" style="display: none">
         <span class="span-title-nav">数据列表</span>
         <div class="float-right">
-            @foreach($pageActions as $pageAction)
-                <input style="margin-right:10px;"
-                       type="button"
-                       class="layui-btn layui-btn-sm layui-btn-normal"
-                       onclick="{{ $pageAction["funcName"] }}"
-                       value="{{ $pageAction["name"] }}"/>
-            @endforeach
+            @if(isset($pageActoins))
+                @foreach($pageActions as $pageAction)
+                    <input style="margin-right:10px;"
+                           type="button"
+                           class="layui-btn layui-btn-sm layui-btn-normal"
+                           onclick="{{ $pageAction["funcName"] }}"
+                           value="{{ $pageAction["name"] }}"/>
+                @endforeach
+            @endif
         </div>
     </div>
 </div>
