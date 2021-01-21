@@ -107,6 +107,15 @@ $("#proofForm").serializeArray().map(function(x){
         </div>
     </div>
     <div class="layui-colla-item">
+        <h2 class="layui-colla-title">form 表单的监听</h2>
+        <div class="layui-colla-content">
+layForm.on("radio(user-type)", function (data) {
+    console.log(data.elem); //得到radio原始DOM对象
+    console.log(data.value); //被点击的radio的value值
+})
+        </div>
+    </div>
+    <div class="layui-colla-item">
         <h2 class="layui-colla-title">占位-TEST</h2>
         <div class="layui-colla-content">
             内容
