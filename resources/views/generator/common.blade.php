@@ -116,9 +116,32 @@ layForm.on("radio(user-type)", function (data) {
         </div>
     </div>
     <div class="layui-colla-item">
+        <h2 class="layui-colla-title">重置一个对象的属性值</h2>
+        <div class="layui-colla-content">
+            <pre class="layui-code">
+    /**
+    * 重置 formData 的属性值
+    * @param newData
+    *      比如输入 {invoiceType: 'personal'}，就会改变 vueApp.formData.invoiceType 的值为 personal
+    */
+    function setFormData (newData) {
+        for (let attr in newData) {
+            if (vueApp.formData[attr] !== undefined) {
+                console.log(vueApp.formData[attr]);
+                vueApp.formData[attr] = newData[attr];
+            }
+        }
+    },
+            </pre>
+        </div>
+    </div>
+
+    <div class="layui-colla-item">
         <h2 class="layui-colla-title">占位-TEST</h2>
         <div class="layui-colla-content">
+            <pre class="layui-code">
             内容
+            </pre>
         </div>
     </div>
 </div>
