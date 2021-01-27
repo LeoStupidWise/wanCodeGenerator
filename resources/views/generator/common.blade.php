@@ -135,6 +135,26 @@ layForm.on("radio(user-type)", function (data) {
             </pre>
         </div>
     </div>
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">监听鼠标失去焦点、移入（移出）</h2>
+        <div class="layui-colla-content">
+            <pre class="layui-code">
+$(document).on('blur','#form-item-phone',function(){
+    let phone = $(this).val();
+});
+
+$(document).on("mouseover mouseout", ".help-show-when-focus", function(event){
+    if(event.type === "mouseover"){
+        $(this).children('span').removeClass("display-none");
+        $(this).children('span').addClass("display-inline");
+    }else if(event.type === "mouseout"){
+        $(this).children('span').removeClass("display-inline");
+        $(this).children('span').addClass("display-none");
+    }
+});
+            </pre>
+        </div>
+    </div>
 
     <div class="layui-colla-item">
         <h2 class="layui-colla-title">占位-TEST</h2>
