@@ -155,7 +155,32 @@ $(document).on("mouseover mouseout", ".help-show-when-focus", function(event){
             </pre>
         </div>
     </div>
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">Vue实例化</h2>
+<div class="layui-colla-content">
+    <pre class="layui-code">
+let vueApp = new Vue({
+    el: '#vue-app',
+    data: {
+        //
+    },
+    methods: {
+        renderLayUi: function () {
+            layui.use(['jquery','layer','table','form','laydate'],function(){
+                //
+            });
+        },
+    },
+    created: function () {
 
+    },
+    mounted: function () {
+        this.renderLayUi();
+    }
+});
+    </pre>
+</div>
+    </div>
     <div class="layui-colla-item">
         <h2 class="layui-colla-title">占位-TEST</h2>
         <div class="layui-colla-content">
