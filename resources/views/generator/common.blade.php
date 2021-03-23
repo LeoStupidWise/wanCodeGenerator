@@ -162,13 +162,24 @@ $(document).on("mouseover mouseout", ".help-show-when-focus", function(event){
 let vueApp = new Vue({
     el: '#vue-app',
     data: {
-        //
+        layForm: null,
     },
     methods: {
         renderLayUi: function () {
             layui.use(['jquery','layer','table','form','laydate'],function(){
-                //
+                let layForm = null;
+                vueApp.layForm = layForm = layui.form;
+
+                vueApp.rerender();
             });
+        },
+        /**
+         * 重新渲染表单，因为 vue 在更新数据也需要时间，所以需要等一会儿才能重新渲染 layui
+         */
+        rerender: function (time = 200) {
+            setTimeout(function () {
+                vueApp.layForm.render();
+            }, time);
         },
     },
     created: function () {
@@ -179,6 +190,22 @@ let vueApp = new Vue({
     }
 });
     </pre>
+</div>
+<div class="layui-colla-item">
+    <h2 class="layui-colla-title">Vue</h2>
+    <div class="layui-colla-content">
+        <pre class="layui-code">
+@verbatim
+<\span v-if="abnormalItem.count.show"
+      v-bind:class="{'margin-left-20': abnormalItem.amount.show, 'middle-number': !abnormalItem.amount.show}"
+>
+    abnormalItem.amount.show 为真时，用 margin-left-20 的样式，abnormalItem.amount.show 为假时（即 !abnormalItem.amount.show）
+    用 middle-number 样式
+    {{ abnormalItem.count.text }}{{ abnormalItem.count.value }}
+<\/span>
+@endverbatim
+        </pre>
+    </div>
 </div>
     </div>
     <div class="layui-colla-item">
