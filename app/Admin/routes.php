@@ -13,4 +13,10 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('home');
 
+    $router->group([
+        'prefix' => 'wan',
+        'namespace' => 'Wan'
+    ], function (Router $router) {
+        $router->get('business', 'BusinessController@index')->name('wan.business');
+    });
 });

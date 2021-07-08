@@ -207,7 +207,18 @@ let vueApp = new Vue({
         </pre>
     </div>
 </div>
-    </div>
+        <div class="layui-colla-item">
+            <h2 class="layui-colla-title">Vue+layUI构建的添加/编辑/查看三合一页面</h2>
+            <div class="layui-colla-content">
+用 Vue 构建的一个添加/编辑/查看，三合一页面，页面数据都通过 ajax 获得，都是通过变量来控制页面效果。之前有使用过这种写法，有个困难在于 layUI
+和 Vue 无法完美融合，就是 layUI 页面变化后，需要自己对事件进行监听，然后更改 Vue。
+            <br/>>
+因为没做好 PHP 代码和 JS 代码的输出，所以在下面的代码中，把所有的“<”都替换成了“<\”，如果想要直接使用下面的代码，将“<\”替换回“<”即可。
+        <pre class="layui-code">
+    @include('common.add-use-vue')
+        </pre>
+            </div>
+        </div>
     <div class="layui-colla-item">
         <h2 class="layui-colla-title">占位-TEST</h2>
         <div class="layui-colla-content">
